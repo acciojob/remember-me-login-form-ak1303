@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.removeItem('username');
 			localStorage.removeItem('password');
 		}
+		let loginBtn = document.createElement('button');
+		loginBtn.id = 'existing';
+		loginBtn.innerText = 'Login as existing user';
+		form.append(loginBtn);
 		alert(`Logged in as ${username.value}`)
 	})
 	
 	let user = localStorage.getItem('username') 
 	if(user){
-		let loginBtn = document.createElement('button');
-		loginBtn.id = 'existing';
-		loginBtn.innerText = 'Login as existing user';
-		form.append(loginBtn);
 		loginBtn.addEventListener('click',()=>{
 			alert(`Logged in as ${user}`);
 		})
