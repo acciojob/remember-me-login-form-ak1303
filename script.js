@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	let password=document.getElementById('password');
 	let form = document.getElementsByTagName('form')[0];
 	submitBtn.addEventListener('click',(e)=>{
-		e.preventDefault();
 		if(checkbox.checked){
 			localStorage.setItem('username',username.value);
 			localStorage.setItem('password',password.value);
