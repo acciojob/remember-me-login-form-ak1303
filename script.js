@@ -1,26 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let submitBtn = document.getElementById('submit');
-    let checkbox = document.getElementById('checkbox');
-    let username = document.getElementById('username');
-    let password = document.getElementById('password');
     let form = document.getElementById('loginForm');
 
-    submitBtn.addEventListener('click', (e) => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        let checkbox = document.getElementById('checkbox');
+
         if (checkbox.checked) {
-            localStorage.setItem('username', username.value);
-            localStorage.setItem('password', password.value);
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
         } else {
             localStorage.removeItem('username');
             localStorage.removeItem('password');
         }
-        alert(`Logged in as ${username.value}`);
+        alert(`Logged in as ${username}`);
         displayExistingUserButton();
     });
 
     function displayExistingUserButton() {
         let user = localStorage.getItem('username');
         let existingBtn = document.getElementById('existing');
+
         if (user && !existingBtn) {
             existingBtn = document.createElement('button');
             existingBtn.id = 'existing';
