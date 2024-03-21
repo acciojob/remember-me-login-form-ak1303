@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	let checkbox = document.getElementById('checkbox');
 	let username=document.getElementById('username');
 	let password=document.getElementById('password');
+	let loginBtn = document.getElementById('existing');
+	loginBtn.style.visibility = 'hidden';
 	let form = document.getElementsByTagName('form')[0];
 	submitBtn.addEventListener('click',(e)=>{
 		if(checkbox.checked){
@@ -15,13 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		alert(`Logged in as ${username.value}`)
 	})
-	
-	let user = localStorage.getItem('username') 
+	let user = localStorage.getItem('username');
 	if(user){
-		let loginBtn = document.createElement('button');
-		loginBtn.id = 'existing';
-		loginBtn.innerText = 'Login as existing user';
-		form.append(loginBtn);
+		loginBtn.style.visibility = '';
 		loginBtn.addEventListener('click',()=>{
 			alert(`Logged in as ${user}`);
 		})
