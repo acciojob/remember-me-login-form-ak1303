@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('password');
         }
         alert(`Logged in as ${username}`);
-        displayExistingUserButton();
+        displayExistingUserButton(); // Call function to update the existing user button
     });
 
     function displayExistingUserButton() {
         let user = localStorage.getItem('username');
         let existingBtn = document.getElementById('existing');
 
-        if (user && !existingBtn) {
+        if (user && !existingBtn) { // If user exists and button doesn't
             existingBtn = document.createElement('button');
             existingBtn.id = 'existing';
             existingBtn.innerText = 'Login as existing user';
@@ -30,10 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
             existingBtn.addEventListener('click', () => {
                 alert(`Logged in as ${user}`);
             });
-        } else if (!user && existingBtn) {
+        } else if (!user && existingBtn) { // If user doesn't exist and button exists
             existingBtn.remove();
         }
     }
 
+    // Initial call to display existing user button based on local storage
     displayExistingUserButton();
 });
