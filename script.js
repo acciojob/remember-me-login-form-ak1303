@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	let checkbox = document.getElementById('checkbox');
 	let username=document.getElementById('username');
 	let password=document.getElementById('password');
+	let loginBtn = document.createElement('button');
+	loginBtn.id = 'existing';
+	loginBtn.innerText = 'Login as existing user';
 	let form = document.getElementsByTagName('form')[0];
 	submitBtn.addEventListener('click',(e)=>{
 		e.preventDefault();
@@ -14,9 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.removeItem('username');
 			localStorage.removeItem('password');
 		}
-		let loginBtn = document.createElement('button');
-		loginBtn.id = 'existing';
-		loginBtn.innerText = 'Login as existing user';
 		form.append(loginBtn);
 		alert(`Logged in as ${username.value}`)
 	})
