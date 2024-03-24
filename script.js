@@ -6,18 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
         let checkbox = document.getElementById('checkbox');
-
+		checkbox.addEventListener('change',(e)=>{
+			if(!checkbox.checked){
+				localStorage.removeItem('username');
+	            localStorage.removeItem('password');
+			}
+		})
         if (checkbox.checked) {
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
-        } else {
-            localStorage.removeItem('username');
-            localStorage.removeItem('password');
-        }
+		}
         alert(`Logged in as ${username}`);
         displayExistingUserButton(); // Call function to update the existing user button
     });
-
     function displayExistingUserButton() {
         let user = localStorage.getItem('username');
         let existingBtn = document.getElementById('existing');
