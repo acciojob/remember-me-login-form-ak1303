@@ -8,34 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let checkbox = document.getElementById('checkbox');
 		checkbox.addEventListener('change',(e)=>{
 			if(!checkbox.checked){
+				existingBtn.style.display='none';
 				localStorage.removeItem('username');
 	            localStorage.removeItem('password');
 			}
 		})
+         let existingBtn = document.getElementById('existing');
         if (checkbox.checked) {
+			existingBtn.style.display='block';
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
 		}
         alert(`Logged in as ${username}`);
-        displayExistingUserButton(); // Call function to update the existing user button
     });
-    function displayExistingUserButton() {
-        let user = localStorage.getItem('username');
-        let existingBtn = document.getElementById('existing');
-
-        if (user && !existingBtn) { // If user exists and button doesn't
-            existingBtn = document.createElement('button');
-            existingBtn.id = 'existing';
-            existingBtn.innerText = 'Login as existing user';
-            form.appendChild(existingBtn);
-            existingBtn.addEventListener('click', () => {
-                alert(`Logged in as ${user}`);
-            });
-        } //else if (!user && existingBtn) { // If user doesn't exist and button exists
-        //     existingBtn.remove();
-        // }
-    }
-
-    // Initial call to display existing user button based on local storage
-    displayExistingUserButton();
 });
