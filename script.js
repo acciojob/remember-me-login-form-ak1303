@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             existingBtn.addEventListener('click', () => {
                 alert(`Logged in as ${user}`);
             });
-        } else if (!user && existingBtn) { // If user doesn't exist and button exists
-            existingBtn.remove();
-        }
+        } //else if (!user && existingBtn) { // If user doesn't exist and button exists
+        //     existingBtn.remove();
+        // }
     }
 
     // Initial call to display existing user button based on local storage
